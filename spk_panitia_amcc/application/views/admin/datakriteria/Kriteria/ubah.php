@@ -1,6 +1,6 @@
 <?php $this->load->view('admin/template/header'); ?>
 
-<div class="page-content d-flex align-items-stretch"> 
+<div class="page-content d-flex align-items-stretch">
   <!-- Side Navbar -->
   <nav class="side-navbar">
     <!-- Sidebar Header-->
@@ -41,7 +41,9 @@
       </div>
     </header>
     <br>
-    <!-- Tambah kriteria -->
+    <!-- Ubah kriteria -->
+    <php <?php foreach ($table as $data): ?>
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
@@ -51,41 +53,45 @@
               <h3 class="h4">Ubah Kriteria</h3>
             </div>
             <div class="card-body">
-              <div class="form-group row">
-                <label class="col-sm-3 form-control-label">Nilai</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control">
-                </div>
+            <form method="post" action="<?= base_url() ?>index.php/admin/DataKriteria/Kriteria/Kriteria/UpdateKriteria">
+             <div class="form-group row">
+              <label class="col-sm-3 form-control-label">Nama Kriteria</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" name="nama_kriteria" value="<?php echo $data['nama_kriteria']; ?>" >
               </div>
-              <div class="form-group row">
-                <label class="col-sm-3 form-control-label">Kode</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" >
-                </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 form-control-label">Kode</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" name="kode_kriteria" required>
               </div>
-              <div class="form-group row">
-                <label class="col-sm-3 form-control-label">Bobot</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" >
-                </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 form-control-label">Bobot</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" name="bobot_kriteria" required>
               </div>
-              <div class="form-group row">
-                <label class="col-sm-3 form-control-label">Keterangan</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" >
-                </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 form-control-label">Keterangan</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" name="ket_kriteria" required>
               </div>
-              <br>
-              <div class="form-group row">
-                <div class="col-sm-4 offset-sm-3">
-                  <a style="color: white;" href="<?=site_url('admin/DataKriteria/Kriteria/Kriteria')?>"><button type="submit" class="btn btn-primary">Simpan</button></a>
-                </div>
-                </div>
-            </div><!-- card-body -->
+            </div>
+            <br>
+            <div class="form-group row">
+              <div class="col-sm-4 offset-sm-3">
 
+                <a href="<?=site_url('admin/DataKriteria/Kriteria/Kriteria')?>"><input type="submit" name="simpan_kriteria" class="btn btn-primary"></a>
+
+              </div>
+            </div>
+            </form>
+          </div><!-- card-body -->
           </div><!-- card -->
         </div>
       </div><!-- row -->
     </div>
 
   <?php $this->load->view('admin/template/footer'); ?>
+<?php endforeach ?>
